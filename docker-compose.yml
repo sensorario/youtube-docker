@@ -1,9 +1,24 @@
 version: '3.7'
 services:
+  postgres:
+    build:
+      context: ./docker/database/
+    ports:
+      - "5555:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sensorario
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    ports:
+      - "10000:8080"
   server:
     build:
       context: ./docker/server/
     volumes:
       - ./:/var/www/html
     ports:
-      - "8888:80"
+      - "8889:80"

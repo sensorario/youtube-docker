@@ -1,0 +1,6 @@
+{
+    "require": {
+        "doctrine/dbal": "^3.4",
+        "symfony/uid": "^6.1"
+    }
+}
